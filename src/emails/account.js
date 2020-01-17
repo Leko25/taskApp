@@ -2,7 +2,7 @@ var sgMail = require('@sendgrid/mail');
 
 sgMail.setApiKey(process.env.SENDGRID_API);
 
-var sender = 'icheleck25@gmail.com';
+var sender = process.env.SENDER;
 
 var sendSingUpEmail = async (email, name) => {
   await sgMail.send({

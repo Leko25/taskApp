@@ -1,19 +1,19 @@
-var sgMail = require('@sendgrid/mail');
+const sgMail = require('@sendgrid/mail');
 
 sgMail.setApiKey(process.env.SENDGRID_API);
 
-var sender = process.env.SENDER;
+const sender = process.env.SENDER;
 
-var sendSingUpEmail = async (email, name) => {
-  await sgMail.send({
-      to: email,
-      from: sender,
-      subject: 'Welcome!',
-      text: `Thanks for signing up ${name}.`
-  })
+const sendSingUpEmail = async (email, name) => {
+    await sgMail.send({
+        to: email,
+        from: sender,
+        subject: 'Welcome!',
+        text: `Thanks for signing up ${name}.`
+    })
 };
 
-var sendCancellationEmail = async (email, name) => {
+const sendCancellationEmail = async (email, name) => {
     await sgMail.send({
         to: email,
         from: sender,

@@ -1,6 +1,6 @@
-var mongoose = require('mongoose');
+const mongoose = require('mongoose');
 
-var taskSchema = new mongoose.Schema({
+const taskSchema = new mongoose.Schema({
   description: {
     type: String,
     required: true,
@@ -10,7 +10,7 @@ var taskSchema = new mongoose.Schema({
     type: Boolean,
     default: false
   },
-  userId:{
+  userId: {
     type: mongoose.Schema.Types.ObjectId,
     required: true,
     ref: 'User'

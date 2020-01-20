@@ -1,25 +1,25 @@
-var express = require('express');
-var router = new express.Router();
+const express = require('express');
+const router = new express.Router();
 
 //import user model
-var User = require('../models/user');
+const User = require('../models/user');
 //import HTTP statuses
-var HTTPStatuses  = require('./HTTPStatus');
+const HTTPStatuses = require('./HTTPStatus');
 //import authentication middleware
-var authentication = require('../middleware/authentication');
+const authentication = require('../middleware/authentication');
 //import multer for file uploads
-var multer = require('multer');
+const multer = require('multer');
 //image processing sharp
-var sharp = require('sharp');
+const sharp = require('sharp');
 //import email functions from sendgrid
-var { sendSignUpEmail, sendCancellationEmail } = require('../emails/account');
+const {sendSignUpEmail, sendCancellationEmail} = require('../emails/account');
 
-var upload = multer({
+const upload = multer({
   limits: {
     fileSize: 1e6
   },
   fileFilter(req, file, cb) {
-    if(!file.originalname.match(/\.(jpg|jpeg|png)$/)){
+    if (!file.originalname.match(/\.(jpg|jpeg|png)$/)) {
       return cb(new Error("Please upload an image"));
     }
     cb(undefined, true);

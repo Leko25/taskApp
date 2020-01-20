@@ -1,14 +1,14 @@
 //import express
-var express = require('express');
+const express = require('express');
 //connect mongoose to database
 require('./db/mongoose');
 //import user router
-var userRouter = require('./routers/user-router');
+const userRouter = require('./routers/user-router');
 //import task router
-var taskRouter = require('./routers/task-router');
+const taskRouter = require('./routers/task-router');
 
-var app = express();
-var port = process.env.PORT;
+const app = express();
+const port = process.env.PORT;
 
 app.use(express.json()); //Parse incoming json
 app.use(userRouter); //Register user router

@@ -1,6 +1,6 @@
-var jwt = require('jsonwebtoken');
-var User = require('../models/user');
-var HTTPStatuses = require('../routers/HTTPStatus');
+const jwt = require('jsonwebtoken');
+const User = require('../models/user');
+const HTTPStatuses = require('../routers/HTTPStatus');
 
 var authentication = async (req, res, next)=>{
   try{
@@ -18,6 +18,6 @@ var authentication = async (req, res, next)=>{
   }catch(err){
     res.status(HTTPStatuses.notFound).send({error: "Please provide authentication"});
   }
-}
+};
 
 module.exports = authentication;

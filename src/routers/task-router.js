@@ -1,12 +1,12 @@
-var express = require('express');
-var router = express.Router();
-var authentication = require('../middleware/authentication');
+const express = require('express');
+const router = express.Router();
+const authentication = require('../middleware/authentication');
 
 //import task model
-var Task = require('../models/tasks');
+const Task = require('../models/tasks');
 
-//import HTTP stutuses
-var HTTPStatuses  = require('./HTTPStatus');
+//import HTTP statuses
+const HTTPStatuses = require('./HTTPStatus');
 
 //Create new task
 router.post('/tasks', authentication, async (req, res)=>{

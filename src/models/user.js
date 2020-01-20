@@ -1,10 +1,10 @@
-var mongoose = require('mongoose');
-var validator = require('validator');
-var bcrypt = require('bcryptjs');
-var jwt = require('jsonwebtoken');
-var Task = require('./tasks');
+const mongoose = require('mongoose');
+const validator = require('validator');
+const bcrypt = require('bcryptjs');
+const jwt = require('jsonwebtoken');
+const Task = require('./tasks');
 
-var userSchema = new mongoose.Schema({
+const userSchema = new mongoose.Schema({
   name: {
     type: String,
     trim: true,
@@ -16,8 +16,8 @@ var userSchema = new mongoose.Schema({
     required: true,
     trim: true,
     lowercase: true,
-    validate(value){
-      if(!validator.isEmail(value)){
+    validate(value) {
+      if (!validator.isEmail(value)) {
         throw new Error("Not a valid email");
       }
     }
@@ -25,8 +25,8 @@ var userSchema = new mongoose.Schema({
   age: {
     type: Number,
     default: 1,
-    validate(value){
-      if(value <= 0){
+    validate(value) {
+      if (value <= 0) {
         throw new Error('Age must be positive')
       }
     }
@@ -35,11 +35,11 @@ var userSchema = new mongoose.Schema({
     type: String,
     required: true,
     trim: true,
-    validate(value){
-      if(value.length < 6){
+    validate(value) {
+      if (value.length < 6) {
         throw new Error("password is not long enough");
       }
-      if(value.toLowerCase().includes("password")){
+      if (value.toLowerCase().includes("password")) {
         throw new Error("user password cannot contain 'password'");
       }
     }
@@ -48,9 +48,9 @@ var userSchema = new mongoose.Schema({
     type: Buffer
   },
   authTokens: [{
-    authToken:{
+    authToken: {
       type: String,
-      required:true
+      required: true
     }
   }]
 }, {
